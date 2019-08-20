@@ -102,44 +102,44 @@ public class ContractTests {
         });
     }
 
-    @Test
-    public void tokenContractRequiresTheTransactionsOutputToHaveAPositiveAmount() {
-        TokenState zeroTokenState = new TokenState(alice.getParty(), bob.getParty(), 0);
-        TokenState negativeTokenState = new TokenState(alice.getParty(), bob.getParty(), -1);
-        TokenState positiveTokenState = new TokenState(alice.getParty(), bob.getParty(), 2);
-
-        transaction(ledgerServices, tx -> {
-            // Has zero-amount TokenState, will fail.
-            tx.output(TokenContract.ID, zeroTokenState);
-            tx.command(Arrays.asList(alice.getPublicKey(), bob.getPublicKey()), new TokenContract.Issue());
-            tx.fails();
-            return null;
-        });
-
-        transaction(ledgerServices, tx -> {
-            // Has negative-amount TokenState, will fail.
-            tx.output(TokenContract.ID, negativeTokenState);
-            tx.command(Arrays.asList(alice.getPublicKey(), bob.getPublicKey()), new TokenContract.Issue());
-            tx.fails();
-            return null;
-        });
-
-        transaction(ledgerServices, tx -> {
-            // Has positive-amount TokenState, will verify.
-            tx.output(TokenContract.ID, tokenState);
-            tx.command(Arrays.asList(alice.getPublicKey(), bob.getPublicKey()), new TokenContract.Issue());
-            tx.verifies();
-            return null;
-        });
-
-        transaction(ledgerServices, tx -> {
-            // Also has positive-amount TokenState, will verify.
-            tx.output(TokenContract.ID, positiveTokenState);
-            tx.command(Arrays.asList(alice.getPublicKey(), bob.getPublicKey()), new TokenContract.Issue());
-            tx.verifies();
-            return null;
-        });
-    }
+//    @Test
+//    public void tokenContractRequiresTheTransactionsOutputToHaveAPositiveAmount() {
+//        TokenState zeroTokenState = new TokenState(alice.getParty(), bob.getParty(), 0);
+//        TokenState negativeTokenState = new TokenState(alice.getParty(), bob.getParty(), -1);
+//        TokenState positiveTokenState = new TokenState(alice.getParty(), bob.getParty(), 2);
+//
+//        transaction(ledgerServices, tx -> {
+//            // Has zero-amount TokenState, will fail.
+//            tx.output(TokenContract.ID, zeroTokenState);
+//            tx.command(Arrays.asList(alice.getPublicKey(), bob.getPublicKey()), new TokenContract.Issue());
+//            tx.fails();
+//            return null;
+//        });
+//
+//        transaction(ledgerServices, tx -> {
+//            // Has negative-amount TokenState, will fail.
+//            tx.output(TokenContract.ID, negativeTokenState);
+//            tx.command(Arrays.asList(alice.getPublicKey(), bob.getPublicKey()), new TokenContract.Issue());
+//            tx.fails();
+//            return null;
+//        });
+//
+//        transaction(ledgerServices, tx -> {
+//            // Has positive-amount TokenState, will verify.
+//            tx.output(TokenContract.ID, tokenState);
+//            tx.command(Arrays.asList(alice.getPublicKey(), bob.getPublicKey()), new TokenContract.Issue());
+//            tx.verifies();
+//            return null;
+//        });
+//
+//        transaction(ledgerServices, tx -> {
+//            // Also has positive-amount TokenState, will verify.
+//            tx.output(TokenContract.ID, positiveTokenState);
+//            tx.command(Arrays.asList(alice.getPublicKey(), bob.getPublicKey()), new TokenContract.Issue());
+//            tx.verifies();
+//            return null;
+//        });
+//    }
 
     @Test
     public void tokenContractRequiresTheTransactionsCommandToBeAnIssueCommand() {

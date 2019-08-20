@@ -92,20 +92,20 @@ public class FlowTests {
         assert (command.getValue() instanceof TokenContract.Issue);
     }
 
-    @Test
-    public void transactionConstructedByFlowHasOneCommandWithTheIssuerAndTheOwnerAsASigners() throws Exception {
-        TokenIssueFlowInitiator flow = new TokenIssueFlowInitiator(nodeB.getInfo().getLegalIdentities().get(0), 99);
-        CordaFuture<SignedTransaction> future = nodeA.startFlow(flow);
-        network.runNetwork();
-        SignedTransaction signedTransaction = future.get();
-
-        assertEquals(1, signedTransaction.getTx().getCommands().size());
-        Command command = signedTransaction.getTx().getCommands().get(0);
-
-        assertEquals(2, command.getSigners().size());
-        assertTrue(command.getSigners().contains(nodeA.getInfo().getLegalIdentities().get(0).getOwningKey()));
-        assertTrue(command.getSigners().contains(nodeB.getInfo().getLegalIdentities().get(0).getOwningKey()));
-    }
+//    @Test
+//    public void transactionConstructedByFlowHasOneCommandWithTheIssuerAndTheOwnerAsASigners() throws Exception {
+//        TokenIssueFlowInitiator flow = new TokenIssueFlowInitiator(nodeB.getInfo().getLegalIdentities().get(0), 99);
+//        CordaFuture<SignedTransaction> future = nodeA.startFlow(flow);
+//        network.runNetwork();
+//        SignedTransaction signedTransaction = future.get();
+//
+//        assertEquals(1, signedTransaction.getTx().getCommands().size());
+//        Command command = signedTransaction.getTx().getCommands().get(0);
+//
+//        assertEquals(2, command.getSigners().size());
+//        assertTrue(command.getSigners().contains(nodeA.getInfo().getLegalIdentities().get(0).getOwningKey()));
+//        assertTrue(command.getSigners().contains(nodeB.getInfo().getLegalIdentities().get(0).getOwningKey()));
+//    }
 
     @Test
     public void transactionConstructedByFlowHasNoInputsAttachmentsOrTimeWindows() throws Exception {

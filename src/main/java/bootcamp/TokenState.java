@@ -1,5 +1,6 @@
 package bootcamp;
 
+import net.corda.core.contracts.BelongsToContract;
 import net.corda.core.contracts.ContractState;
 import net.corda.core.identity.AbstractParty;
 import net.corda.core.identity.Party;
@@ -8,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@BelongsToContract(TokenContract.class)
 public class TokenState implements ContractState {
    private  Party issuer;
    private  Party owner;

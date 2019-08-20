@@ -7,8 +7,6 @@ import net.corda.core.contracts.CommandData;
 public class TokenContract {
     public static String ID = "bootcamp.TokenContract";
 
-
-
     public interface Commands extends CommandData {
         class Issue implements Commands {
 

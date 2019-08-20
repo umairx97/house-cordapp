@@ -17,6 +17,8 @@ public class ContainerState implements ContractState {
     private Party owner;
     private Party carrier;
 
+
+
     public ContainerState(int width, int height, int depth, String contents, Party owner, Party carrier) {
         this.width = width;
         this.height = height;

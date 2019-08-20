@@ -33,8 +33,8 @@ public class TokenState implements ContractState {
 
     public List<AbstractParty> getParticipants() {
         List<AbstractParty> participants = new ArrayList<>();
-        participants.add(issuer);
         participants.add(owner);
+        participants.add(issuer);
         return participants;
     }
 }
